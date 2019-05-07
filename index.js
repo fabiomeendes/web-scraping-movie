@@ -11,14 +11,16 @@ const puppeteer = require('puppeteer');
     let rating = document.querySelector('span[itemprop=ratingValue]').innerText;
     let ratingCount = document.querySelector('span[itemprop=ratingCount]').innerText;
     let duration = document.querySelector('time[datetime=PT181M]').innerText;
-    let age = document.querySelector('div[class=subtext]').innerText.substring(0, 2);    
+    let age = document.querySelector('div[class=subtext]').innerText.substring(0, 2);
+    const stars = Array.from(document.querySelectorAll('td.primary_photo img')).map((x) => x.alt);
 
     return {
       title,
       rating,
       ratingCount,
       duration,
-      age
+      age,
+      stars
     }
   });
 
