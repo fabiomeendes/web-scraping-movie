@@ -13,6 +13,7 @@ const puppeteer = require('puppeteer');
     let duration = document.querySelector('time[datetime=PT181M]').innerText;
     let age = document.querySelector('div[class=subtext]').innerText.substring(0, 2);
     const stars = Array.from(document.querySelectorAll('td.primary_photo img')).map((x) => x.alt);
+    const directors = Array.from(document.querySelectorAll('div.plot_summary div.credit_summary_item [href*="dr"]')).map((x) => x.innerText.trim()) // href* is like includes; dr = director
 
     return {
       title,
@@ -20,7 +21,8 @@ const puppeteer = require('puppeteer');
       ratingCount,
       duration,
       age,
-      stars
+      stars,
+      directors
     }
   });
 
